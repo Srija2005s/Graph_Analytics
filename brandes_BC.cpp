@@ -1,36 +1,3 @@
-
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <unordered_map>
-#include <unordered_set>
-#include <map>
-#include <algorithm>
-#include <iomanip>
-#include <numeric>
-#include <random>
-#include <limits>
-using namespace std;
-using Graph = vector<vector<int>>;
-
-// -------------------- Read Graph --------------------
-void read_graph(Graph &g, int &V, int &E) {
-    if (!(cin >> V >> E)) {
-        cerr << "Failed to read V E\n";
-        exit(1);
-    }
-    g.assign(V, {});
-    for (int i = 0; i < E; i++) {
-        int u, v;
-        cin >> u >> v;
-        if (u>=0 && v>=0 && u<V && v<V) {
-            g[u].push_back(v);
-            g[v].push_back(u);
-        }
-    }
-}
-
 // -------------------- Brandes (Exact) --------------------
 vector<double> brandes_full(const Graph &G) {
     int V = G.size();
