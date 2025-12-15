@@ -29,6 +29,24 @@ void read_graph(Graph &g, int &V, int &E) {
         }
     }
 }
+
+// -------------------- Helpers --------------------
+vector<pair<double,int>> rank_nodes(const vector<double>&BC){
+    vector<pair<double,int>> r;
+    for(int i=0;i<BC.size();i++) r.push_back({BC[i],i});
+    sort(r.begin(),r.end(),[](auto &a,auto &b){
+        if(a.first!=b.first) return a.first>b.first;
+        return a.second<b.second;
+    });
+    return r;
+}
+
+void print_vector(const vector<double>&A){
+    cout<<fixed<<setprecision(6);
+    for(int i=0;i<A.size();i++){
+        cout<<A[i]<<(i+1<A.size()?' ':'\n');
+    }
+}
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
